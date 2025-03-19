@@ -1,0 +1,146 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { registerValidation } from "./registerValidation";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
+
+const RegisterForm = () => {
+  const form = useForm({
+    resolver: zodResolver(registerValidation),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+    },
+  });
+
+  const password = form.watch("password");
+  const passwordConfirm = form.watch("passwordConfirm");
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    console.log(data);
+  };
+
+  return (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6 py-8 w-full max-w-md mx-auto"
+      >
+        {/* Name Field */}
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-foreground">Name</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  placeholder="Enter your name"
+                  className="bg-background text-foreground border-border"
+                />
+              </FormControl>
+              <FormMessage className="text-destructive" />
+            </FormItem>
+          )}
+        />
+
+        {/* Email Field */}
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-foreground">Email</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  type="email"
+                  placeholder="Enter your email"
+                  className="bg-background text-foreground border-border"
+                />
+              </FormControl>
+              <FormMessage className="text-destructive" />
+            </FormItem>
+          )}
+        />
+
+        {/* Password Field */}
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-foreground">Password</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  type="password"
+                  placeholder="Enter your password"
+                  className="bg-background text-foreground border-border"
+                />
+              </FormControl>
+              <FormMessage className="text-destructive" />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="passwordConfirm"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-foreground">
+                Confirm Password
+              </FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  type="password"
+                  placeholder="Enter your password"
+                  className="bg-background text-foreground border-border"
+                />
+              </FormControl>
+
+              {passwordConfirm && password !== passwordConfirm ? (
+                <FormMessage>Password doesn&apos;t match</FormMessage>
+              ) : (
+                <FormMessage className="text-destructive" />
+              )}
+            </FormItem>
+          )}
+        />
+
+        <Button
+          type="submit"
+          className="w-full bg-primary text-primary-foreground"
+        >
+          Register
+        </Button>
+      </form>
+
+      <div>
+        <p className="text-center text-foreground">
+          Already have an account?{" "}
+          <Link href="/login" className="text-primary font-medium">
+            Login
+          </Link>
+        </p>
+      </div>
+    </Form>
+  );
+};
+
+export default RegisterForm;
