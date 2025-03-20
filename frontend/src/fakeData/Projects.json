@@ -1,0 +1,352 @@
+[
+  {
+    "id": 1,
+    "title": "E-Commerce Revamp",
+    "banner": "https://i.ibb.co/1GVbjPXF/image.png",
+    "description": "A complete revamp of an online store to enhance performance, design, and user experience.",
+    "livePreview": "https://ecommerce.example.com",
+    "github": "https://github.com/user/ecommerce-project",
+    "challenge": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "The client’s online store suffered from slow loading speeds, poor UX/UI, and high cart abandonment rates.",
+      "challenges": [
+        "Slow website performance leading to low customer retention.",
+        "Complicated checkout process causing high cart abandonment.",
+        "Outdated design not optimized for mobile users."
+      ]
+    },
+    "solution": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Redesigned the platform with a modern UI/UX, optimized speed, and seamless checkout integration.",
+      "solutions": [
+        "Implemented Next.js for faster page loads and improved performance.",
+        "Simplified checkout process reducing steps and increasing conversions.",
+        "Redesigned UI/UX to be mobile-friendly and more engaging."
+      ]
+    },
+    "result": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "The improved website resulted in a significant boost in sales and customer engagement.",
+      "results": [
+        "35% increase in conversion rates.",
+        "40% reduction in cart abandonment.",
+        "Improved site speed by 60% leading to better SEO rankings."
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "title": "Luxury Hotel Website",
+    "banner": "https://i.ibb.co/1GVbjPXF/image.png",
+    "description": "A premium website for a luxury hotel offering virtual tours, booking integrations, and high-end design.",
+    "livePreview": "https://hotel.example.com",
+    "github": "https://github.com/user/hotel-project",
+    "challenge": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "The hotel lacked a compelling digital presence, leading to a decline in direct bookings.",
+      "challenges": [
+        "Website was not visually appealing and did not reflect brand luxury.",
+        "Limited booking options and lack of mobile responsiveness.",
+        "Poor SEO rankings leading to low organic traffic."
+      ]
+    },
+    "solution": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Created an immersive website with high-quality visuals, virtual tours, and a seamless booking system.",
+      "solutions": [
+        "Designed a visually stunning website with smooth animations.",
+        "Integrated an easy-to-use booking system.",
+        "Optimized SEO and improved Google ranking."
+      ]
+    },
+    "result": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "The website overhaul led to higher user engagement and direct bookings.",
+      "results": [
+        "50% increase in direct bookings.",
+        "20% improvement in search rankings.",
+        "Enhanced brand credibility with an elegant digital experience."
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "title": "SaaS Dashboard UI/UX",
+    "banner": "https://i.ibb.co/1GVbjPXF/image.png",
+    "description": "Revamped a SaaS company's analytics dashboard for better usability and data visualization.",
+    "livePreview": "https://dashboard.example.com",
+    "github": "https://github.com/user/dashboard-project",
+    "challenge": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Users struggled to navigate the SaaS dashboard due to cluttered UI and lack of interactive elements.",
+      "challenges": [
+        "Overcomplicated UI leading to poor user experience.",
+        "Lack of real-time analytics and insights.",
+        "No dark mode, which was a common user request."
+      ]
+    },
+    "solution": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Redesigned the UI/UX with clear navigation, interactive graphs, and improved usability.",
+      "solutions": [
+        "Simplified the layout for intuitive navigation.",
+        "Added real-time data visualization with React charts.",
+        "Implemented dark mode for better accessibility."
+      ]
+    },
+    "result": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "User adoption rates increased significantly after the new dashboard was released.",
+      "results": [
+        "30% improvement in user retention.",
+        "Users reported 2x faster task completion time.",
+        "Positive feedback from beta testers led to higher engagement."
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "title": "AI Chatbot Integration",
+    "banner": "https://i.ibb.co/1GVbjPXF/image.png",
+    "description": "An AI-powered chatbot integrated into an existing support system to improve response times.",
+    "livePreview": "https://chatbot.example.com",
+    "github": "https://github.com/user/chatbot-project",
+    "challenge": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Customer support team was overwhelmed with repetitive queries, slowing down response times.",
+      "challenges": [
+        "High volume of common inquiries requiring manual responses.",
+        "Slow response times leading to customer dissatisfaction.",
+        "No AI-driven automation in place."
+      ]
+    },
+    "solution": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Built a custom AI chatbot that handles FAQs, processes requests, and escalates complex issues.",
+      "solutions": [
+        "Integrated AI-powered chatbot for automated support.",
+        "Improved response times by handling FAQs instantly.",
+        "Smart escalation system for complex customer queries."
+      ]
+    },
+    "result": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "The chatbot significantly reduced support workload and improved customer satisfaction.",
+      "results": [
+        "60% reduction in customer wait time.",
+        "Enhanced engagement with AI-driven responses.",
+        "Customer satisfaction ratings increased by 25%."
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "title": "AI Chatbot Integration",
+    "banner": "https://i.ibb.co/1GVbjPXF/image.png",
+    "description": "An AI-powered chatbot integrated into an existing support system to improve response times.",
+    "livePreview": "https://chatbot.example.com",
+    "github": "https://github.com/user/chatbot-project",
+    "challenge": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Customer support team was overwhelmed with repetitive queries, slowing down response times.",
+      "challenges": [
+        "High volume of common inquiries requiring manual responses.",
+        "Slow response times leading to customer dissatisfaction.",
+        "No AI-driven automation in place."
+      ]
+    },
+    "solution": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Built a custom AI chatbot that handles FAQs, processes requests, and escalates complex issues.",
+      "solutions": [
+        "Integrated AI-powered chatbot for automated support.",
+        "Improved response times by handling FAQs instantly.",
+        "Smart escalation system for complex customer queries."
+      ]
+    },
+    "result": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "The chatbot significantly reduced support workload and improved customer satisfaction.",
+      "results": [
+        "60% reduction in customer wait time.",
+        "Enhanced engagement with AI-driven responses.",
+        "Customer satisfaction ratings increased by 25%."
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "title": "AI Chatbot Integration",
+    "banner": "https://i.ibb.co/1GVbjPXF/image.png",
+    "description": "An AI-powered chatbot integrated into an existing support system to improve response times.",
+    "livePreview": "https://chatbot.example.com",
+    "github": "https://github.com/user/chatbot-project",
+    "challenge": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Customer support team was overwhelmed with repetitive queries, slowing down response times.",
+      "challenges": [
+        "High volume of common inquiries requiring manual responses.",
+        "Slow response times leading to customer dissatisfaction.",
+        "No AI-driven automation in place."
+      ]
+    },
+    "solution": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Built a custom AI chatbot that handles FAQs, processes requests, and escalates complex issues.",
+      "solutions": [
+        "Integrated AI-powered chatbot for automated support.",
+        "Improved response times by handling FAQs instantly.",
+        "Smart escalation system for complex customer queries."
+      ]
+    },
+    "result": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "The chatbot significantly reduced support workload and improved customer satisfaction.",
+      "results": [
+        "60% reduction in customer wait time.",
+        "Enhanced engagement with AI-driven responses.",
+        "Customer satisfaction ratings increased by 25%."
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "title": "AI Chatbot Integration",
+    "banner": "https://i.ibb.co/1GVbjPXF/image.png",
+    "description": "An AI-powered chatbot integrated into an existing support system to improve response times.",
+    "livePreview": "https://chatbot.example.com",
+    "github": "https://github.com/user/chatbot-project",
+    "challenge": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Customer support team was overwhelmed with repetitive queries, slowing down response times.",
+      "challenges": [
+        "High volume of common inquiries requiring manual responses.",
+        "Slow response times leading to customer dissatisfaction.",
+        "No AI-driven automation in place."
+      ]
+    },
+    "solution": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Built a custom AI chatbot that handles FAQs, processes requests, and escalates complex issues.",
+      "solutions": [
+        "Integrated AI-powered chatbot for automated support.",
+        "Improved response times by handling FAQs instantly.",
+        "Smart escalation system for complex customer queries."
+      ]
+    },
+    "result": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "The chatbot significantly reduced support workload and improved customer satisfaction.",
+      "results": [
+        "60% reduction in customer wait time.",
+        "Enhanced engagement with AI-driven responses.",
+        "Customer satisfaction ratings increased by 25%."
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "title": "AI Chatbot Integration",
+    "banner": "https://i.ibb.co/1GVbjPXF/image.png",
+    "description": "An AI-powered chatbot integrated into an existing support system to improve response times.",
+    "livePreview": "https://chatbot.example.com",
+    "github": "https://github.com/user/chatbot-project",
+    "challenge": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Customer support team was overwhelmed with repetitive queries, slowing down response times.",
+      "challenges": [
+        "High volume of common inquiries requiring manual responses.",
+        "Slow response times leading to customer dissatisfaction.",
+        "No AI-driven automation in place."
+      ]
+    },
+    "solution": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Built a custom AI chatbot that handles FAQs, processes requests, and escalates complex issues.",
+      "solutions": [
+        "Integrated AI-powered chatbot for automated support.",
+        "Improved response times by handling FAQs instantly.",
+        "Smart escalation system for complex customer queries."
+      ]
+    },
+    "result": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "The chatbot significantly reduced support workload and improved customer satisfaction.",
+      "results": [
+        "60% reduction in customer wait time.",
+        "Enhanced engagement with AI-driven responses.",
+        "Customer satisfaction ratings increased by 25%."
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "title": "AI Chatbot Integration",
+    "banner": "https://i.ibb.co/1GVbjPXF/image.png",
+    "description": "An AI-powered chatbot integrated into an existing support system to improve response times.",
+    "livePreview": "https://chatbot.example.com",
+    "github": "https://github.com/user/chatbot-project",
+    "challenge": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Customer support team was overwhelmed with repetitive queries, slowing down response times.",
+      "challenges": [
+        "High volume of common inquiries requiring manual responses.",
+        "Slow response times leading to customer dissatisfaction.",
+        "No AI-driven automation in place."
+      ]
+    },
+    "solution": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Built a custom AI chatbot that handles FAQs, processes requests, and escalates complex issues.",
+      "solutions": [
+        "Integrated AI-powered chatbot for automated support.",
+        "Improved response times by handling FAQs instantly.",
+        "Smart escalation system for complex customer queries."
+      ]
+    },
+    "result": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "The chatbot significantly reduced support workload and improved customer satisfaction.",
+      "results": [
+        "60% reduction in customer wait time.",
+        "Enhanced engagement with AI-driven responses.",
+        "Customer satisfaction ratings increased by 25%."
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "title": "AI Chatbot Integration",
+    "banner": "https://i.ibb.co/1GVbjPXF/image.png",
+    "description": "An AI-powered chatbot integrated into an existing support system to improve response times.",
+    "livePreview": "https://chatbot.example.com",
+    "github": "https://github.com/user/chatbot-project",
+    "challenge": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Customer support team was overwhelmed with repetitive queries, slowing down response times.",
+      "challenges": [
+        "High volume of common inquiries requiring manual responses.",
+        "Slow response times leading to customer dissatisfaction.",
+        "No AI-driven automation in place."
+      ]
+    },
+    "solution": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "Built a custom AI chatbot that handles FAQs, processes requests, and escalates complex issues.",
+      "solutions": [
+        "Integrated AI-powered chatbot for automated support.",
+        "Improved response times by handling FAQs instantly.",
+        "Smart escalation system for complex customer queries."
+      ]
+    },
+    "result": {
+      "image": "https://i.ibb.co/1GVbjPXF/image.png",
+      "description": "The chatbot significantly reduced support workload and improved customer satisfaction.",
+      "results": [
+        "60% reduction in customer wait time.",
+        "Enhanced engagement with AI-driven responses.",
+        "Customer satisfaction ratings increased by 25%."
+      ]
+    }
+  }
+]

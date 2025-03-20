@@ -15,9 +15,9 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      initial={{ opacity: 0, scale: 0.8, y: 20 }} // Start small & lower
-      animate={{ opacity: 1, scale: 1, y: 0 }} // Pop into place
-      transition={{ duration: 0.6, ease: "easeOut" }} // Smooth transition
+      initial={{ opacity: 0, scale: 0.8, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className="bg-white shadow-md fixed top-0 left-1/2 -translate-x-1/2 z-50 max-w-7xl w-full px-6 py-3 border border-gray-200 rounded-xl"
     >
       <div className="flex justify-between items-center mx-auto max-w-6xl w-full">

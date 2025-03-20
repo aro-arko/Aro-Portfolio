@@ -1,6 +1,7 @@
 "use client";
 import Banner from "@/components/modules/Home/Banner/Banner";
 import About from "@/components/modules/Home/About/About";
+import FeaturedProjects from "@/components/modules/Home/FeaturedProjects/FeaturedProjects";
 
 const HomePage = () => {
   return (
@@ -9,6 +10,7 @@ const HomePage = () => {
       <section id="about">
         <About />
       </section>
+      <FeaturedProjects />
     </div>
   );
 };
