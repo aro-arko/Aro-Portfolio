@@ -1,11 +1,14 @@
-import About from "@/components/modules/Home/About/About";
+"use client";
 import Banner from "@/components/modules/Home/Banner/Banner";
+import About from "@/components/modules/Home/About/About";
 
 const HomePage = () => {
   return (
     <div>
       <Banner />
-      <About />
+      <section id="about">
+        <About />
+      </section>
     </div>
   );
 };
