@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
+import Banner from "@/components/modules/Home/Banner/Banner";
 
 const HomePage = () => {
   return (
     <div>
-      <Button>Click Me</Button>
+      <Banner />
     </div>
   );
 };
