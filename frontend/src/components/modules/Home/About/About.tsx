@@ -17,7 +17,7 @@ const About = () => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="max-w-7xl mx-auto px-4 py-8"
+      className="max-w-7xl mx-auto  py-8"
     >
       <h1 className="text-4xl font-bold text-center mb-8">About Me</h1>
 
