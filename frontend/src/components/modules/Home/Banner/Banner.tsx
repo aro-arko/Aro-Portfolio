@@ -13,20 +13,18 @@ import {
 } from "lucide-react";
 
 import profileImage from "@/assets/images/profileImage.jpg";
-import { Separator } from "@/components/ui/separator";
 
 const Banner = () => {
   return (
     <motion.section
-      initial={{ opacity: 0, scale: 0.9, y: 20 }} // Start small, lower, and faded
-      animate={{ opacity: 1, scale: 1, y: 0 }} // Grow into place
-      transition={{ duration: 0.6, ease: "easeOut" }} // Smooth effect
-      className="bg-white py-16"
+      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="bg-white pt-16 pb-4"
     >
-      <div className="max-w-7xl mx-auto px-6 py-10 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-          {/* Left Side: Card with Image, Social Icons, and Download CV Button */}
-          <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center space-y-4">
+      <div className="max-w-7xl mx-auto px-6 py md:py-10 lg:px-8 md:shadow-lg md:rounded-xl md:bg-white">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center md:py-8">
+          <div className="bg-white rounded-xl shadow-lg px-6 py-8 flex flex-col items-center text-center space-y-8  border border-gray-100">
             {/* Box-Shaped Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -115,23 +113,24 @@ const Banner = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="md:col-span-2 space-y-6"
           >
-            <h2 className="text-2xl font-semibold text-gray-800">
+            <h2 className="text-4xl font-bold text-gray-800">
               Hi, <br />
-              I&apos;m a Passionate MERN Stack Developer
+              I&apos;m a MERN Stack Developer
             </h2>
             <p className="text-gray-600 leading-relaxed text-justify">
-              I specialize in building modern, scalable, and user-friendly web
+              Expertise in building modern, scalable, and user-friendly web
               applications using <strong>TypeScript</strong>,{" "}
               <strong>React.js</strong>, <strong>Next.js</strong>,{" "}
-              <strong>Redux</strong>,<strong>MongoDB</strong>,{" "}
-              <strong>Express.js</strong>, and <strong>Node.js</strong>. With a
-              strong focus on clean code, efficient state management, and
-              seamless user experiences, I craft high-performance applications
-              that scale effortlessly. My expertise extends to optimizing
-              front-end and back-end workflows, ensuring robust architecture,
-              and delivering engaging digital solutions. By leveraging the power
-              of modern JavaScript frameworks and back-end technologies, I
-              transform ideas into reality with efficiency and precision.
+              <strong>Redux</strong>, <strong>MongoDB</strong>,{" "}
+              <strong>Express.js</strong>, and <strong>Node.js</strong>.
+              Committed to clean code, efficient state management, and seamless
+              user experiences, ensuring high-performance applications that
+              scale effortlessly. <br />
+              Proficient in optimizing front-end and back-end workflows,
+              designingrobust architectures, and delivering engaging digital
+              solutions. Skilled at leveraging modern JavaScript frameworks and
+              back-end technologies to transform ideas into reality with
+              precision and efficiency.
             </p>
             <div className="flex space-x-4">
               <Button className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-md flex items-center space-x-2 transition-all">
@@ -147,13 +146,6 @@ const Banner = () => {
             </div>
           </motion.div>
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <Separator className="mt-12 bg-gray-100 " />
-        </motion.div>
       </div>
     </motion.section>
   );
