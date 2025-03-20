@@ -59,7 +59,7 @@ const Certifications = () => {
   ];
 
   return (
-    <div>
+    <div className="max-w-6xl mx-auto w-full">
       <h2 className="text-3xl font-bold text-center mb-8">Certifications</h2>
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
@@ -77,7 +77,7 @@ const Certifications = () => {
               transition={{ duration: 0.3, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
+              <Card className="hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between h-full">
                 <CardHeader className="flex flex-row items-center space-x-3">
                   <div className="flex-shrink-0">{cert.icon}</div>
                   <div>

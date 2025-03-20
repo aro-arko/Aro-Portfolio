@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 
 const Education = () => {
   return (
-    <div className="space-y-8 w-full">
+    <div className="max-w-6xl mx-auto space-y-8 w-full">
       <h2 className="text-3xl font-bold text-center mb-8">Education</h2>
 
       {/* Bachelor's Degree */}
@@ -21,7 +21,7 @@ const Education = () => {
         transition={{ duration: 0.4, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <Card className="w-full border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-800">
+        <Card className="border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-800">
           <CardHeader className="flex items-center space-x-4">
             <div className="bg-blue-100 dark:bg-gray-700 p-3 rounded-lg">
               <GraduationCap className="w-8 h-8 text-blue-600 dark:text-white" />
@@ -53,7 +53,7 @@ const Education = () => {
         transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <Card className="w-full border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-800">
+        <Card className="border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-800">
           <CardHeader className="flex items-center space-x-4">
             <div className="bg-blue-100 dark:bg-gray-700 p-3 rounded-lg">
               <School className="w-8 h-8 text-blue-600 dark:text-white" />

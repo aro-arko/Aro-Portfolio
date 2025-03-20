@@ -22,7 +22,7 @@ const Banner = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="bg-white pt-16 pb-4"
     >
-      <div className="max-w-7xl mx-auto px-6 py md:py-10 lg:px-8 md:shadow-lg md:rounded-xl md:bg-white">
+      <div className="max-w-7xl mx-auto px-6 py md:py-10 lg:px-8 md:shadow-md md:rounded-xl md:bg-white md:border md:border-gray-100">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center md:py-8">
           <div className="bg-white rounded-xl shadow-lg px-6 py-8 flex flex-col items-center text-center space-y-8  border border-gray-100">
             {/* Box-Shaped Image */}
@@ -111,7 +111,7 @@ const Banner = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="md:col-span-2 space-y-6"
+            className="md:col-span-2 md:ml-6 space-y-6"
           >
             <h2 className="text-4xl font-bold text-gray-800">
               Hi, <br />
@@ -126,11 +126,6 @@ const Banner = () => {
               Committed to clean code, efficient state management, and seamless
               user experiences, ensuring high-performance applications that
               scale effortlessly. <br />
-              Proficient in optimizing front-end and back-end workflows,
-              designingrobust architectures, and delivering engaging digital
-              solutions. Skilled at leveraging modern JavaScript frameworks and
-              back-end technologies to transform ideas into reality with
-              precision and efficiency.
             </p>
             <div className="flex space-x-4">
               <Button className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-md flex items-center space-x-2 transition-all">

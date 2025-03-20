@@ -50,7 +50,7 @@ const Navbar = () => {
             Blogs
           </Link>
           <Link
-            href="/about-us"
+            href="/about"
             className="text-lg font-medium text-gray-700 hover:text-blue-500 transition-colors"
           >
             About
