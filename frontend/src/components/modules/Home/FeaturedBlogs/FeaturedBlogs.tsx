@@ -2,33 +2,38 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useInView, motion } from "framer-motion";
-import fakeBlogs from "@/fakeData/Blogs.json";
 import BlogCard from "../../Blogs/BlogCard";
 import Link from "next/link";
 import { IBlog } from "@/types/blog.type";
+import { getAllBlogs } from "@/services/blogServices";
 
 const FeaturedBlogs = () => {
   const [blogs, setBlogs] = useState<IBlog[]>([]);
 
-  // Ref and InView for scroll animation
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      // ✅ Replace with backend API call later
-      setBlogs(fakeBlogs);
+      const response = await getAllBlogs();
+      if (response?.success && response.data) {
+        setBlogs(response.data);
+      }
     };
     fetchBlogs();
   }, []);
 
-  const featured = [...blogs]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  const latestThree = [...blogs]
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )
     .slice(0, 3);
 
   return (
     <div className="max-w-7xl mx-auto py-12">
       <h2 className="text-4xl font-bold text-center mb-8">Featured Blogs</h2>
+
       <motion.div
         ref={sectionRef}
         initial={{ opacity: 0, y: 50 }}
@@ -36,8 +41,8 @@ const FeaturedBlogs = () => {
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featured.map((blog) => (
-            <BlogCard key={blog.id} blog={blog} />
+          {latestThree.map((blog) => (
+            <BlogCard key={blog._id} blog={blog} />
           ))}
         </div>
 
