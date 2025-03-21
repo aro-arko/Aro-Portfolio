@@ -7,6 +7,27 @@ const createSkill = async (payLoad: ISkill) => {
   return skill;
 };
 
+const getAllSkills = async () => {
+  const skills = await Skill.find();
+
+  return skills;
+};
+
+const updateSkill = async (id: string, payLoad: Partial<ISkill>) => {
+  const skill = await Skill.findByIdAndUpdate(id, payLoad, { new: true });
+
+  return skill;
+};
+
+const deleteSkill = async (id: string) => {
+  await Skill.findByIdAndDelete(id);
+
+  return null;
+};
+
 export const skillService = {
   createSkill,
+  getAllSkills,
+  updateSkill,
+  deleteSkill,
 };
