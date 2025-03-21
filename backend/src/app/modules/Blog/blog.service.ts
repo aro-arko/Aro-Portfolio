@@ -15,6 +15,18 @@ const createBlog = async (blog: IBlog) => {
   }
 };
 
+const getAllBlogs = async () => {
+  const blogs = await Blog.find();
+  return blogs;
+};
+
+const updateBlog = async (id: string, blog: IBlog) => {
+  const updatedBlog = await Blog.findByIdAndUpdate(id, blog, { new: true });
+  return updatedBlog;
+};
+
 export const blogService = {
   createBlog,
+  getAllBlogs,
+  updateBlog,
 };
