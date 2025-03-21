@@ -25,7 +25,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <Link href="/" className="text-3xl font-bold tracking-wide">
             <span className="text-gray-900">Ar</span>
-            <span className="text-blue-500">o</span>
+            <span className="text-blue-600">o</span>
           </Link>
         </div>
 
@@ -59,9 +59,11 @@ const Navbar = () => {
 
         {/* Call-to-Action Button */}
         <div className="hidden md:flex">
-          <Button className="bg-blue-600 hover:bg-blue-500 text-white py-4 px-6 rounded-md flex items-center space-x-2 transition-all">
-            Let’s Talk
-          </Button>
+          <Link href="#contact">
+            <Button className="bg-blue-600 hover:bg-blue-500 text-white py-4 px-6 rounded-md flex items-center space-x-2 transition-all">
+              Let’s Talk
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle Button */}
@@ -114,10 +116,12 @@ const Navbar = () => {
             </div>
 
             {/* Call-to-Action Button for Mobile */}
-            <Button className="w-full bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-md flex items-center justify-center space-x-2 mt-3 transition-all">
-              <span>Let’s Talk</span>
-              <ArrowUpRight size={16} />
-            </Button>
+            <Link href="#contact">
+              <Button className="w-full bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-md flex items-center justify-center space-x-2 mt-3 transition-all">
+                <span>Let’s Talk</span>
+                <ArrowUpRight size={16} />
+              </Button>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

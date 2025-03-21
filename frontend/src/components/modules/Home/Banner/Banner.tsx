@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 
 import profileImage from "@/assets/images/profileImage.jpg";
+import Link from "next/link";
 
 const Banner = () => {
   return (
@@ -128,16 +129,20 @@ const Banner = () => {
               scale effortlessly. <br />
             </p>
             <div className="flex space-x-4">
-              <Button className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-md flex items-center space-x-2 transition-all">
-                <span>View Projects</span>
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-              <Button
-                variant="outline"
-                className="text-blue-600 border-blue-600 hover:bg-blue-50 px-6 py-3 rounded-md flex items-center space-x-2 transition-all"
-              >
-                <span>Contact Me</span>
-              </Button>
+              <Link href="/projects">
+                <Button className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-md flex items-center space-x-2 transition-all cursor-pointer">
+                  <span>View Projects</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+              <Link href="#contact">
+                <Button
+                  variant="outline"
+                  className="text-blue-600 border-blue-600 hover:bg-blue-50 px-6 py-3 rounded-md flex items-center space-x-2 transition-all cursor-pointer"
+                >
+                  <span>Contact Me</span>
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>
