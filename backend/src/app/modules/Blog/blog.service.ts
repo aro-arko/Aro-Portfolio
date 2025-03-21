@@ -5,8 +5,9 @@ import httpStatus from 'http-status';
 
 const createBlog = async (blog: IBlog) => {
   try {
-    const totalBlogs = await Blog.countDocuments();
-    blog.blog_no = totalBlogs + 1;
+    const lastBlog = await Blog.findOne().sort({ blog_no: -1 });
+
+    blog.blog_no = lastBlog ? lastBlog.blog_no + 1 : 1;
 
     return await Blog.create(blog);
   } catch (error) {
@@ -25,8 +26,14 @@ const updateBlog = async (id: string, blog: IBlog) => {
   return updatedBlog;
 };
 
+const deleteBlog = async (id: string) => {
+  await Blog.findByIdAndDelete(id);
+  return;
+};
+
 export const blogService = {
   createBlog,
   getAllBlogs,
   updateBlog,
+  deleteBlog,
 };
