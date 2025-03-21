@@ -9,6 +9,8 @@ const router = express.Router();
 
 router.get('/', blogController.getAllBlogs);
 
+router.get('/:id', blogController.getBlogById);
+
 router.post(
   '/create-blog',
   auth(USER_ROLE.arko),

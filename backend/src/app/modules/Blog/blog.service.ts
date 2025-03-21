@@ -21,6 +21,11 @@ const getAllBlogs = async () => {
   return blogs;
 };
 
+const getBlogById = async (id: string) => {
+  const blog = await Blog.findById(id);
+  return blog;
+};
+
 const updateBlog = async (id: string, blog: IBlog) => {
   const updatedBlog = await Blog.findByIdAndUpdate(id, blog, { new: true });
   return updatedBlog;
@@ -36,4 +41,5 @@ export const blogService = {
   getAllBlogs,
   updateBlog,
   deleteBlog,
+  getBlogById,
 };
