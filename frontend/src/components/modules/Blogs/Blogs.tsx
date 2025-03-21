@@ -3,25 +3,31 @@
 import { useEffect, useRef, useState } from "react";
 import BlogCard from "./BlogCard";
 import { motion, AnimatePresence } from "framer-motion";
-import fakeBlogs from "@/fakeData/Blogs.json";
+import { IBlog } from "@/types/blog.type";
+import { getAllBlogs } from "@/services/blogServices";
 
 const Blogs = () => {
-  const [blogs, setBlogs] = useState<
-    { id: string; title: string; date: string }[]
-  >([]);
+  const [blogs, setBlogs] = useState<IBlog[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("latest");
   const [currentPage, setCurrentPage] = useState(1);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const blogsPerPage = 6;
-  const filterRef = useRef(null);
+  const filterRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setBlogs(fakeBlogs);
+    const fetchData = async () => {
+      const response = await getAllBlogs();
+      if (response?.success && response.data) {
+        setBlogs(response.data);
+      }
+    };
+    fetchData();
   }, []);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const handleClickOutside = (event: any) => {
       if (filterRef.current && !filterRef.current.contains(event.target)) {
         setIsFilterOpen(false);
       }
@@ -36,9 +42,9 @@ const Blogs = () => {
 
   const sortedBlogs = [...filteredBlogs].sort((a, b) => {
     if (sortOrder === "latest")
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     if (sortOrder === "oldest")
-      return new Date(a.date).getTime() - new Date(b.date).getTime();
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
     if (sortOrder === "alphabetical") return a.title.localeCompare(b.title);
     return 0;
   });
@@ -53,7 +59,7 @@ const Blogs = () => {
     currentPage > 1 && setCurrentPage(currentPage - 1);
   const goToNextPage = () =>
     currentPage < totalPages && setCurrentPage(currentPage + 1);
-  const goToPage = (page) => setCurrentPage(page);
+  const goToPage = (page: number) => setCurrentPage(page);
 
   return (
     <div className="max-w-7xl mx-auto py-12 px-4">
@@ -128,7 +134,7 @@ const Blogs = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {currentBlogs.map((blog) => (
-            <BlogCard key={blog.id} blog={blog} />
+            <BlogCard key={blog._id} blog={blog} />
           ))}
         </div>
 

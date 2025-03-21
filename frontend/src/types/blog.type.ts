@@ -1,5 +1,5 @@
 export interface IBlog {
-  id: number;
+  _id: number;
   title: string;
   banner: string;
   date: string;
@@ -13,4 +13,6 @@ export interface IBlog {
   tags: string[];
   author: string;
   category: string;
+  createdAt: string;
+  updatedAt: string;
 }
