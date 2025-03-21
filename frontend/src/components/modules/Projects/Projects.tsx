@@ -54,8 +54,16 @@ const Projects = () => {
     indexOfLastProject
   );
 
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
   const totalPages = Math.ceil(sortedProjects.length / projectsPerPage);
+
+  // Pagination Handlers
+  const goToPreviousPage = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+  const goToNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+  const goToPage = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <div className="max-w-7xl mx-auto py-12">
@@ -160,25 +168,39 @@ const Projects = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="flex justify-center mt-8"
+            className="flex justify-center mt-8 gap-2"
           >
-            <nav className="flex gap-2">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (pageNumber) => (
-                  <button
-                    key={pageNumber}
-                    onClick={() => paginate(pageNumber)}
-                    className={`px-4 py-2 border rounded-lg transition-all ${
-                      currentPage === pageNumber
-                        ? "bg-blue-500 text-white"
-                        : "hover:bg-gray-100"
-                    }`}
-                  >
-                    {pageNumber}
-                  </button>
-                )
-              )}
-            </nav>
+            <button
+              onClick={goToPreviousPage}
+              disabled={currentPage === 1}
+              className="px-4 py-2 border rounded-lg bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+            >
+              ← Previous
+            </button>
+
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+              (pageNumber) => (
+                <button
+                  key={pageNumber}
+                  onClick={() => goToPage(pageNumber)}
+                  className={`px-4 py-2 border rounded-lg ${
+                    currentPage === pageNumber
+                      ? "bg-blue-500 text-white"
+                      : "hover:bg-gray-100"
+                  }`}
+                >
+                  {pageNumber}
+                </button>
+              )
+            )}
+
+            <button
+              onClick={goToNextPage}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 border rounded-lg bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+            >
+              Next →
+            </button>
           </motion.div>
         )}
       </motion.div>
