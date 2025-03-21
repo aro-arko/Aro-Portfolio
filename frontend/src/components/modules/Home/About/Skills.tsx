@@ -1,27 +1,38 @@
 "use client";
-import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaReact,
-  FaNodeJs,
-  FaCode,
-  FaLock,
-  FaDatabase,
-} from "react-icons/fa";
-import {
-  SiTailwindcss,
-  SiTypescript,
-  SiNextdotjs,
-  SiRedux,
-  SiExpress,
-  SiMongodb,
-  SiShadcnui,
-} from "react-icons/si";
+
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import SkillCard from "./SkillCard";
+import Image from "next/image";
+import { getSkills } from "@/services/skillServices";
+
+interface ISkill {
+  _id: string;
+  title: string;
+  icon: string;
+  category: "frontend" | "backend";
+}
 
 const Skills = () => {
+  const [frontendSkills, setFrontendSkills] = useState<ISkill[]>([]);
+  const [backendSkills, setBackendSkills] = useState<ISkill[]>([]);
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const res = await getSkills();
+        const allSkills: ISkill[] = res?.data || [];
+
+        setFrontendSkills(allSkills.filter((s) => s.category === "frontend"));
+        setBackendSkills(allSkills.filter((s) => s.category === "backend"));
+      } catch (error) {
+        console.error("Error fetching skills:", error);
+      }
+    };
+
+    fetchSkills();
+  }, []);
+
   return (
     <div>
       <h2 className="text-3xl font-bold text-center mb-8">Skills</h2>
@@ -33,6 +44,7 @@ const Skills = () => {
         className="space-y-8 w-full"
       >
         <div className="max-w-6xl mx-auto space-y-10">
+          {/* Frontend Skills */}
           <motion.div>
             <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-300">
               Frontend Development
@@ -40,18 +52,30 @@ const Skills = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {frontendSkills.map((skill, index) => (
                 <motion.div
-                  key={index}
+                  key={skill._id}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <SkillCard title={skill.title} icon={skill.icon} />
+                  <SkillCard
+                    title={skill.title}
+                    icon={
+                      <Image
+                        src={skill.icon}
+                        alt={skill.title}
+                        width={40}
+                        height={40}
+                        className="w-8 h-8 object-contain"
+                      />
+                    }
+                  />
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
+          {/* Backend Skills */}
           <motion.div>
             <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-300">
               Backend Development
@@ -59,13 +83,24 @@ const Skills = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {backendSkills.map((skill, index) => (
                 <motion.div
-                  key={index}
+                  key={skill._id}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <SkillCard title={skill.title} icon={skill.icon} />
+                  <SkillCard
+                    title={skill.title}
+                    icon={
+                      <Image
+                        src={skill.icon}
+                        alt={skill.title}
+                        width={40}
+                        height={40}
+                        className="w-8 h-8 object-contain"
+                      />
+                    }
+                  />
                 </motion.div>
               ))}
             </div>
@@ -75,54 +110,5 @@ const Skills = () => {
     </div>
   );
 };
-
-const frontendSkills = [
-  { title: "HTML5", icon: <FaHtml5 className="w-8 h-8 text-orange-500" /> },
-  { title: "CSS3", icon: <FaCss3Alt className="w-8 h-8 text-blue-500" /> },
-  {
-    title: "Tailwind CSS",
-    icon: <SiTailwindcss className="w-8 h-8 text-blue-400" />,
-  },
-  { title: "Shadcn", icon: <SiShadcnui className="w-8 h-8 text-gray-600" /> },
-  {
-    title: "JavaScript (ES6+)",
-    icon: <FaJs className="w-8 h-8 text-yellow-400" />,
-  },
-  {
-    title: "TypeScript",
-    icon: <SiTypescript className="w-8 h-8 text-blue-600" />,
-  },
-  { title: "React.js", icon: <FaReact className="w-8 h-8 text-blue-400" /> },
-  {
-    title: "Next.js",
-    icon: <SiNextdotjs className="w-8 h-8 text-gray-800 dark:text-white" />,
-  },
-  {
-    title: "Redux (State Management)",
-    icon: <SiRedux className="w-8 h-8 text-purple-500" />,
-  },
-];
-
-// 🔹 Backend Skills Array
-const backendSkills = [
-  { title: "Node.js", icon: <FaNodeJs className="w-8 h-8 text-green-600" /> },
-  {
-    title: "Express.js",
-    icon: <SiExpress className="w-8 h-8 text-gray-800 dark:text-gray-300" />,
-  },
-  { title: "RESTful APIs", icon: <FaCode className="w-8 h-8 text-blue-500" /> },
-  {
-    title: "Role-Based Authentication (JWT)",
-    icon: <FaLock className="w-8 h-8 text-blue-700" />,
-  },
-  {
-    title: "Mongoose & MongoDB",
-    icon: <SiMongodb className="w-8 h-8 text-green-500" />,
-  },
-  {
-    title: "Database Design & Optimization",
-    icon: <FaDatabase className="w-8 h-8 text-blue-600" />,
-  },
-];
 
 export default Skills;
