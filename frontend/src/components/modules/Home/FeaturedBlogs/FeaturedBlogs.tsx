@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { useInView, motion } from "framer-motion";
+import { useInView, motion, AnimatePresence } from "framer-motion";
 import BlogCard from "../../Blogs/BlogCard";
 import Link from "next/link";
 import { IBlog } from "@/types/blog.type";
@@ -9,9 +9,10 @@ import { getAllBlogs } from "@/services/blogServices";
 
 const FeaturedBlogs = () => {
   const [blogs, setBlogs] = useState<IBlog[]>([]);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const isInView = useInView(sectionRef, { margin: "-100px" });
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -22,6 +23,12 @@ const FeaturedBlogs = () => {
     };
     fetchBlogs();
   }, []);
+
+  useEffect(() => {
+    if (isInView && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [isInView, hasAnimated]);
 
   const latestThree = [...blogs]
     .sort(
@@ -37,13 +44,23 @@ const FeaturedBlogs = () => {
       <motion.div
         ref={sectionRef}
         initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {latestThree.map((blog) => (
-            <BlogCard key={blog._id} blog={blog} />
-          ))}
+          <AnimatePresence>
+            {latestThree.map((blog, index) => (
+              <motion.div
+                key={blog._id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+              >
+                <BlogCard blog={blog} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
         {/* 🔗 View All Blogs Button */}

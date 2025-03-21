@@ -4,15 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react"; // Import an external link icon
+import { IProject } from "@/types/project.type";
 
-interface Project {
-  id: number;
-  title: string;
-  banner: string;
-  livePreview: string;
-}
-
-const ProjectCard = ({ project }: { project: Project }) => {
+const ProjectCard = ({ project }: { project: IProject }) => {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 hover:shadow-lg transition duration-300">
       {/* Banner Image */}
@@ -36,7 +30,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         {/* Buttons */}
         <div className="flex gap-3">
           {/* View Details Button */}
-          <Link href={`/projects/${project.id}`} className="flex-1">
+          <Link href={`/projects/${project._id}`} className="flex-1">
             <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 transition">
               View Details
             </Button>

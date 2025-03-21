@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import projectData from "@/fakeData/Projects.json";
+import { AnimatePresence, motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
-import { motion, AnimatePresence } from "framer-motion";
+import { IProject } from "@/types/project.type";
+import { getProjects } from "@/services/projectServices";
 
 const Projects = () => {
+  const [projects, setProjects] = useState<IProject[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("latest");
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,7 +15,16 @@ const Projects = () => {
   const projectsPerPage = 9;
   const filterRef = useRef<HTMLDivElement | null>(null);
 
-  // Close filter modal if clicked outside
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const response = await getProjects();
+      if (response?.success && response.data) {
+        setProjects(response.data);
+      }
+    };
+    fetchProjects();
+  }, []);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -23,30 +34,23 @@ const Projects = () => {
         setIsFilterOpen(false);
       }
     };
-
-    if (isFilterOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
+    document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isFilterOpen]);
+  }, []);
 
-  // Filter projects based on search query
-  const filteredProjects = projectData.filter((project) =>
+  const filteredProjects = projects.filter((project) =>
     project.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Sort projects
   const sortedProjects = [...filteredProjects].sort((a, b) => {
-    if (sortOrder === "latest") return b.id - a.id;
-    if (sortOrder === "oldest") return a.id - b.id;
+    if (sortOrder === "latest")
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    if (sortOrder === "oldest")
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
     if (sortOrder === "alphabetical") return a.title.localeCompare(b.title);
     return 0;
   });
 
-  // Pagination logic
   const indexOfLastProject = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
   const currentProjects = sortedProjects.slice(
@@ -56,60 +60,36 @@ const Projects = () => {
 
   const totalPages = Math.ceil(sortedProjects.length / projectsPerPage);
 
-  // Pagination Handlers
-  const goToPreviousPage = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
-  const goToNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-  };
-  const goToPage = (pageNumber: number) => setCurrentPage(pageNumber);
+  const goToPreviousPage = () =>
+    currentPage > 1 && setCurrentPage(currentPage - 1);
+  const goToNextPage = () =>
+    currentPage < totalPages && setCurrentPage(currentPage + 1);
+  const goToPage = (page: number) => setCurrentPage(page);
 
   return (
     <div className="max-w-7xl mx-auto py-12">
       <h2 className="text-4xl font-bold text-center mb-8">Projects</h2>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 1.5, ease: "easeInOut" }}
-        className=""
-      >
+
+      <div>
+        {/* Filters & Search */}
         <div className="flex items-center justify-between relative mb-6">
-          {/* Filters Button */}
           <div className="relative">
             <button
               onClick={() => setIsFilterOpen(!isFilterOpen)}
               className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
-                />
-              </svg>
               Filters
             </button>
-
-            {/* Filter Pop-Up Animation */}
             <AnimatePresence>
               {isFilterOpen && (
                 <motion.div
                   ref={filterRef}
-                  initial={{ opacity: 0, scale: 0.9, y: -10 }}
+                  initial={{ opacity: 0, scale: 0.95, y: -10 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: -10 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  transition={{ duration: 0.3 }}
                   className="absolute left-0 mt-2 w-64 bg-white shadow-lg p-4 rounded-lg z-50"
                 >
-                  {/* Sorting Options */}
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Sort By
                   </label>
@@ -126,7 +106,6 @@ const Projects = () => {
             </AnimatePresence>
           </div>
 
-          {/* Search Bar */}
           <div className="relative w-1/3 min-w-[200px]">
             <input
               type="text"
@@ -155,21 +134,26 @@ const Projects = () => {
           </div>
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid with Fade-in */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {currentProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+          <AnimatePresence>
+            {currentProjects.map((project, index) => (
+              <motion.div
+                key={project._id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+              >
+                <ProjectCard project={project} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
         {/* Pagination */}
         {sortedProjects.length > projectsPerPage && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="flex justify-center mt-8 gap-2"
-          >
+          <div className="flex justify-center mt-8 gap-2">
             <button
               onClick={goToPreviousPage}
               disabled={currentPage === 1}
@@ -201,9 +185,9 @@ const Projects = () => {
             >
               Next →
             </button>
-          </motion.div>
+          </div>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 };
