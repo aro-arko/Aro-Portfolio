@@ -22,11 +22,6 @@ import { NavMain } from "./nav-main";
 import { NavUser } from "./nav-user";
 
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   navMain: [
     {
       title: "Profile",
@@ -44,7 +39,7 @@ const data = {
         },
         {
           title: "Create Project",
-          url: "/create-project",
+          url: "/projects/create-project",
           icon: PlusCircle,
         },
       ],
@@ -60,7 +55,7 @@ const data = {
         },
         {
           title: "Create Blog",
-          url: "/create-blog",
+          url: "/blogs/create-blog",
           icon: PlusCircle,
         },
       ],
@@ -76,7 +71,7 @@ const data = {
         },
         {
           title: "Create Experience",
-          url: "/create-experience",
+          url: "/experiences/create-experience",
           icon: PlusCircle,
         },
       ],
@@ -92,7 +87,7 @@ const data = {
         },
         {
           title: "Create Skill",
-          url: "/create-skill",
+          url: "/skills/create-skill",
           icon: PlusCircle,
         },
       ],
@@ -119,7 +114,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

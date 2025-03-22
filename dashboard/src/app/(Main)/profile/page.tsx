@@ -1,11 +1,11 @@
 import Profile from "@/components/modules/Profile/Profile";
 
-const MainPage = async () => {
+const ProfilePage = () => {
   return (
-    <div className="">
+    <div>
       <Profile />
     </div>
   );
 };
 
-export default MainPage;
+export default ProfilePage;
