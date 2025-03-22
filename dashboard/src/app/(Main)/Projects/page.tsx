@@ -1,7 +1,9 @@
+import ShowAllProjects from "@/components/modules/Projects/ShowAllProjects";
+
 const ProjectsPage = () => {
   return (
     <div>
-      <h1>This is ProjectsPage component</h1>
+      <ShowAllProjects />
     </div>
   );
 };
