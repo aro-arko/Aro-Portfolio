@@ -16,11 +16,16 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
 import { loginUser } from "@/services/AuthService";
 import { toast } from "sonner";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const LoginForm = () => {
   const form = useForm({
     // resolver: zodResolver(),
   });
+
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirectPath");
+  const router = useRouter();
 
   const {
     formState: { isSubmitting },
@@ -32,6 +37,11 @@ const LoginForm = () => {
       //   console.log(res);
       if (res?.success) {
         toast.success(res?.message);
+        if (redirect) {
+          router.push(redirect);
+        } else {
+          router.push("/");
+        }
       } else {
         toast.error(res?.message);
       }
