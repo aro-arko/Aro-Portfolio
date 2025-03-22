@@ -25,9 +25,15 @@ const deleteSkill = async (id: string) => {
   return null;
 };
 
+const getSkillById = async (id: string) => {
+  const skill = await Skill.findById(id);
+  return skill;
+};
+
 export const skillService = {
   createSkill,
   getAllSkills,
   updateSkill,
   deleteSkill,
+  getSkillById,
 };

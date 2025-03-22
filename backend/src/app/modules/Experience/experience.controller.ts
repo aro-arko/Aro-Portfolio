@@ -49,9 +49,22 @@ const deleteExperience = catchAsync(async (req, res) => {
   });
 });
 
+const getExperienceById = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await experienceService.getExperienceById(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Experience fetched successfully',
+    data: result,
+  });
+});
+
 export const experienceController = {
   createExperience,
   getAllExperiences,
   updateExperience,
   deleteExperience,
+  getExperienceById,
 };

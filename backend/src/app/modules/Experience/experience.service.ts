@@ -26,9 +26,16 @@ const deleteExperience = async (id: string) => {
   return null;
 };
 
+const getExperienceById = async (id: string) => {
+  const experience = await Experience.findById(id);
+
+  return experience;
+};
+
 export const experienceService = {
   createExperience,
   getAllExperiences,
   updateExperience,
   deleteExperience,
+  getExperienceById,
 };

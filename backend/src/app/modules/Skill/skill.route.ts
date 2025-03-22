@@ -20,4 +20,6 @@ router.put('/update/:id', auth(USER_ROLE.arko), skillController.updateSkill);
 
 router.delete('/delete/:id', auth(USER_ROLE.arko), skillController.deleteSkill);
 
+router.get('/:id', skillController.getSkillById);
+
 export const SkillRoutes = router;
