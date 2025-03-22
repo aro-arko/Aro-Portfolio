@@ -57,3 +57,23 @@ export const getCurrentUser = async () => {
 export const logout = async () => {
   (await cookies()).delete("accessToken");
 };
+
+export const changePassword = async (passwords: FieldValues) => {
+  const token = (await cookies()).get("accessToken")?.value;
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/auth/change-password`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+        body: JSON.stringify(passwords),
+      }
+    );
+    return res.json();
+  } catch (error: any) {
+    return error;
+  }
+};

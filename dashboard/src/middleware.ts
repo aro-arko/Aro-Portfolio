@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCurrentUser } from "./services/AuthService";
+import { cookies } from "next/headers";
 
 const authRoutes = ["/login", "/register"];
 
@@ -21,6 +22,7 @@ export const middleware = async (request: NextRequest) => {
 
   // Restrict access to all routes for non-'arko' roles
   if (userInfo.role !== "arko") {
+    (await cookies()).delete("accessToken");
     return NextResponse.redirect(new URL("/login", request.url));
   }
 

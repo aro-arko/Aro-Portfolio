@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-// import { zodResolver } from "@hookform/resolvers/zod";
+
 import Link from "next/link";
 import { loginUser } from "@/services/AuthService";
 import { toast } from "sonner";
@@ -34,7 +34,7 @@ const LoginForm = () => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
       const res = await loginUser(data);
-      //   console.log(res);
+      // console.log(res);
       if (res?.success) {
         toast.success(res?.message);
         if (redirect) {

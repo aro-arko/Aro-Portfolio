@@ -99,7 +99,7 @@ const data = {
       items: [
         {
           title: "Change Password",
-          url: "/change-password",
+          url: "/settings/change-password",
           icon: Lock,
         },
       ],
