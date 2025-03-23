@@ -38,7 +38,7 @@ const FeaturedBlogs = () => {
     .slice(0, 3);
 
   return (
-    <div className="max-w-7xl mx-auto py-12">
+    <div className="max-w-7xl mx-auto pt-16">
       <h2 className="text-4xl font-bold text-center mb-8">Featured Blogs</h2>
 
       <motion.div

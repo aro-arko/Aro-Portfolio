@@ -10,14 +10,16 @@ const ProjectCard = ({ project }: { project: IProject }) => {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 hover:shadow-lg transition duration-300">
       {/* Banner Image */}
-      <div className="w-full h-48 relative overflow-hidden">
-        <Image
-          src={project.banner || "/images/project-default.jpg"}
-          alt={`${project.title} Cover`}
-          layout="fill"
-          objectFit="cover"
-          className=""
-        />
+      <div className="p-4 pb-0">
+        <div className="relative h-48 w-full rounded-md overflow-hidden">
+          <Image
+            src={project.banner || "/images/project-default.jpg"}
+            alt={`${project.title} Cover`}
+            layout="fill"
+            objectFit="cover"
+            className=""
+          />
+        </div>
       </div>
 
       {/* Content */}

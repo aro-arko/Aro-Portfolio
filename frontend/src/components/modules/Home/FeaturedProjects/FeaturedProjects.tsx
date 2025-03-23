@@ -11,6 +11,7 @@ import { getProjects } from "@/services/projectServices";
 const FeaturedProjects = () => {
   const [projects, setProjects] = useState<IProject[]>([]);
   const [hasAnimated, setHasAnimated] = useState(false);
+
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { margin: "-100px" });
 
@@ -38,7 +39,12 @@ const FeaturedProjects = () => {
     .slice(0, 3);
 
   return (
-    <div className="max-w-7xl mx-auto py-12 px-4">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className="max-w-7xl mx-auto pt-16"
+    >
       <h2 className="text-4xl font-bold text-center mb-8">Latest Projects</h2>
 
       <motion.div
@@ -71,7 +77,7 @@ const FeaturedProjects = () => {
           </Link>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

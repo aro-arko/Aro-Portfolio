@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import SkillCard from "./SkillCard";
 import Image from "next/image";
 import { getSkills } from "@/services/skillServices";
+import Loading from "../../Loading/Loading";
 
 interface ISkill {
   _id: string;
@@ -16,6 +17,7 @@ interface ISkill {
 const Skills = () => {
   const [frontendSkills, setFrontendSkills] = useState<ISkill[]>([]);
   const [backendSkills, setBackendSkills] = useState<ISkill[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -27,11 +29,15 @@ const Skills = () => {
         setBackendSkills(allSkills.filter((s) => s.category === "backend"));
       } catch (error) {
         console.error("Error fetching skills:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchSkills();
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <div>

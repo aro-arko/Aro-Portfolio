@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { getExperieces } from "@/services/experienceServices";
+import Loading from "../../Loading/Loading";
 
 interface ExperienceItem {
   _id: string;
@@ -24,6 +25,7 @@ interface ExperienceItem {
 
 const Experience = () => {
   const [experiences, setExperiences] = useState<ExperienceItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,10 +33,13 @@ const Experience = () => {
       if (response?.success && response.data) {
         setExperiences(response.data);
       }
+      setLoading(false);
     };
 
     fetchData();
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <div>
@@ -57,7 +62,6 @@ const Experience = () => {
             >
               <Card className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-800">
                 <CardHeader className="flex items-center space-x-4">
-                  {/* ✅ Company Logo */}
                   <div className="w-12 h-12 relative rounded-lg overflow-hidden border-3 border-blue-50">
                     <Image
                       src={exp.logo}

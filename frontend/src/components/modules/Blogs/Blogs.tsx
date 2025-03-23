@@ -61,7 +61,7 @@ const Blogs = () => {
   const goToPage = (page: number) => setCurrentPage(page);
 
   return (
-    <div className="max-w-7xl mx-auto py-12 px-4">
+    <div className="max-w-7xl mx-auto py-12">
       <h1 className="text-4xl font-bold text-center mb-10">Blogs</h1>
 
       {/* Filters & Search */}

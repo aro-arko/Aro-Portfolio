@@ -55,7 +55,7 @@ const ContactForm = () => {
   }, [isInView, hasAnimated]);
 
   return (
-    <div className="max-w-7xl mx-auto py-8 mb-8">
+    <div className="max-w-7xl mx-auto py-16">
       <div className="mb-10 text-center">
         <h2 className="text-4xl font-bold text-gray-900">Get In Touch</h2>
         <p className="text-lg text-gray-600 mt-3">

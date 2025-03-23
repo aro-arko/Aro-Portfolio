@@ -8,10 +8,12 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { getProjectById } from "@/services/projectServices";
 import { IProject } from "@/types/project.type";
+import Loading from "../Loading/Loading";
 
 const ProjectDetails = () => {
   const params = useParams();
   const [project, setProject] = useState<IProject | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -20,12 +22,14 @@ const ProjectDetails = () => {
         if (response?.success && response.data) {
           setProject(response.data);
         }
+        setLoading(false);
       }
     };
 
     fetchProject();
   }, [params]);
 
+  if (loading) return <Loading />;
   if (!project) {
     return (
       <div className="text-center text-lg mt-10 text-gray-600">

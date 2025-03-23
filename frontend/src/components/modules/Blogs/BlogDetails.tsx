@@ -6,6 +6,7 @@ import { getBlogById } from "@/services/blogServices";
 import { IBlog } from "@/types/blog.type";
 import Image from "next/image";
 import Link from "next/link";
+import Loading from "../Loading/Loading";
 
 const BlogDetails = () => {
   const params = useParams();
@@ -26,11 +27,7 @@ const BlogDetails = () => {
   }, [params]);
 
   if (loading) {
-    return (
-      <div className="text-center text-gray-500 py-20 text-lg">
-        ⏳ Loading blog...
-      </div>
-    );
+    return <Loading />;
   }
 
   if (!blog) {
